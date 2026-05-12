@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { supabase } from "../supabase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,38 +11,41 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8082/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const { data: user, error: supabaseError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('email', email)
+        .eq('password', password)
+        .single();
 
-      const data = await response.json();
-
-      if (response.ok) {
-        const userData = {
-          nombre: data.username,
-          role: data.role
-        };
-        login(userData, data.token);
-        navigate(data.role === "Administrador" ? "/admin" : "/");
-      } else {
-        setError(data.message || "Credenciales incorrectas");
+      if (supabaseError || !user) {
+        throw new Error("Credenciales incorrectas");
       }
+
+      const userData = {
+        nombre: user.username,
+        role: user.email === "admin@normita.com" ? "Administrador" : "Usuario", // Hardcoded role logic if not in DB
+        email: user.email
+      };
+      
+      login(userData, user.id); // Using ID as token for now
+      navigate(userData.role === "Administrador" ? "/admin" : "/");
+      
     } catch (err) {
-      setError("Error al conectar con el servidor");
+      console.error("Error en login:", err);
+      setError(err.message || "Error al conectar con Supabase");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">

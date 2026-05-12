@@ -10,9 +10,8 @@ const Productos = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
-  const { data, loading, error } = useFetch(
-    `http://localhost:8082/api/productos?pagina=${pagina}&porPagina=9`
-  );
+  const { data, loading, error } = useFetch(pagina, 9);
+
 
   const handleCotizar = (producto) => {
     setProductoSeleccionado(producto);

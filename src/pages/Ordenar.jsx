@@ -1,77 +1,77 @@
 import React from 'react';
 
-const Home = () => {
+const Ordenar = () => {
   return (
-    <section class="bg-gradient-to-r from-pink-50 via-white to-purple-50 py-16">
-    <div class="max-w-6xl mx-auto px-6 lg:px-12">
+    <section className="bg-gradient-to-r from-pink-50 via-white to-purple-50 py-16">
+    <div className="max-w-6xl mx-auto px-6 lg:px-12">
 
-        <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Cómo ordenar tu vestido ✨
             </h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Vive la experiencia Creaciones Normita en simples pasos, desde tu primera cita
                 hasta recibir tu vestido soñado.
             </p>
         </div>
 
         
-        <div class="space-y-10">
-            <div class="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
+        <div className="space-y-10">
+            <div className="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+                <div className="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
                     📞
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-gray-900">Agenda tu cita</h3>
-                    <p class="text-gray-600">
+                    <h3 className="font-semibold text-xl text-gray-900">Agenda tu cita</h3>
+                    <p className="text-gray-600">
                         Contáctanos por WhatsApp o redes sociales para agendar tu visita o iniciar tu cotización.
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
+            <div className="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+                <div className="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
                     👗
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-gray-900">Prueba y elige</h3>
-                    <p class="text-gray-600">
+                    <h3 className="font-semibold text-xl text-gray-900">Prueba y elige</h3>
+                    <p className="text-gray-600">
                         Ven a la boutique, conoce nuestros vestidos, pruébalos y cotiza tu diseño a medida.
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
+            <div className="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+                <div className="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
                     💳
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-gray-900">Reserva con tu anticipo</h3>
-                    <p class="text-gray-600">
+                    <h3 className="font-semibold text-xl text-gray-900">Reserva con tu anticipo</h3>
+                    <p className="text-gray-600">
                         Con un pago del 50% iniciamos el trabajo de tu vestido. Aceptamos pagos en persona o desde otro país.
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
+            <div className="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+                <div className="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
                     ✂️
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-gray-900">Ajustes y pruebas</h3>
-                    <p class="text-gray-600">
+                    <h3 className="font-semibold text-xl text-gray-900">Ajustes y pruebas</h3>
+                    <p className="text-gray-600">
                         Realizamos las pruebas necesarias y ajustes para que tu vestido quede perfecto.
                     </p>
                 </div>
             </div>
 
-            <div class="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
-                <div class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
+            <div className="flex items-start space-x-4 bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition">
+                <div className="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 rounded-full text-2xl">
                     🚚
                 </div>
                 <div>
-                    <h3 class="font-semibold text-xl text-gray-900">Entrega o envío</h3>
-                    <p class="text-gray-600">
+                    <h3 className="font-semibold text-xl text-gray-900">Entrega o envío</h3>
+                    <p className="text-gray-600">
                         Recoge tu vestido en la boutique o recibe tu pedido con envío nacional o internacional.
                     </p>
                 </div>
@@ -79,18 +79,18 @@ const Home = () => {
         </div>
 
         
-        <div class="mt-16 bg-gradient-to-r from-pink-100 to-purple-100 p-8 rounded-2xl text-center shadow">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Pagos aceptados</h3>
-            <p class="text-gray-700">
+        <div className="mt-16 bg-gradient-to-r from-pink-100 to-purple-100 p-8 rounded-2xl text-center shadow">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Pagos aceptados</h3>
+            <p className="text-gray-700">
                 Efectivo, transferencia bancaria o tarjeta. Pagos locales e internacionales 🌍.
             </p>
         </div>
 
         
-        <div class="text-center mt-12">
+        <div className="text-center mt-12">
             <a href="https://wa.me/50376970004?text=Hola,%20quiero%20cotizar%20mi%20vestido"
                target="_blank"
-               class="inline-block px-10 py-4 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 hover:scale-105 transition">
+               className="inline-block px-10 py-4 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 hover:scale-105 transition">
                 Agenda tu cita por WhatsApp
             </a>
         </div>
@@ -99,4 +99,6 @@ const Home = () => {
   );
 };
 
-export default Home;
+
+export default Ordenar;
+

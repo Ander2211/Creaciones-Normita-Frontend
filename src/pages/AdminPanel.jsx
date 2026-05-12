@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
+import { supabase } from "../supabase";
 
 const AdminPanel = () => {
   const { user } = useAuth();
+  const [stats, setStats] = useState({
+    totalProductos: 0,
+    pedidosPendientes: 12, // Placeholder
+    totalUsuarios: 0
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const { count: prodCount } = await supabase
+          .from('productos')
+          .select('*', { count: 'exact', head: true });
+
+        const { count: userCount } = await supabase
+          .from('users')
+          .select('*', { count: 'exact', head: true });
+
+        setStats(prev => ({
+          ...prev,
+          totalProductos: prodCount || 0,
+          totalUsuarios: userCount || 0
+        }));
+      } catch (err) {
+        console.error("Error fetching stats:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   if (user?.role !== "Administrador") {
     return <Navigate to="/" />;
@@ -25,15 +58,15 @@ const AdminPanel = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-pink-50 p-6 rounded-2xl border border-pink-100">
             <h3 className="text-pink-600 font-black text-xs uppercase tracking-widest mb-2">Total Productos</h3>
-            <p className="text-4xl font-black text-slate-800">48</p>
+            <p className="text-4xl font-black text-slate-800">{loading ? "..." : stats.totalProductos}</p>
           </div>
           <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100">
             <h3 className="text-purple-600 font-black text-xs uppercase tracking-widest mb-2">Pedidos Pendientes</h3>
-            <p className="text-4xl font-black text-slate-800">12</p>
+            <p className="text-4xl font-black text-slate-800">{stats.pedidosPendientes}</p>
           </div>
           <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
             <h3 className="text-blue-600 font-black text-xs uppercase tracking-widest mb-2">Usuarios Registrados</h3>
-            <p className="text-4xl font-black text-slate-800">156</p>
+            <p className="text-4xl font-black text-slate-800">{loading ? "..." : stats.totalUsuarios}</p>
           </div>
         </div>
 
@@ -57,3 +90,4 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
+

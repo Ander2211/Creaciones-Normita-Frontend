@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../supabase";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -26,27 +27,30 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8080/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const { error: supabaseError } = await supabase
+        .from('users')
+        .insert([
+          {
+            id: self.crypto.randomUUID(),
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            pais: formData.pais,
+            fecha_creacion: new Date().toISOString()
+          }
+        ]);
 
-      const data = await response.json();
+      if (supabaseError) throw supabaseError;
 
-      if (response.ok) {
-        navigate("/login");
-      } else {
-        setError(data.message || "Error al registrarse");
-      }
+      navigate("/login");
     } catch (err) {
-      setError("Error al conectar con el servidor");
+      console.error("Error en registro:", err);
+      setError(err.message || "Error al conectar con Supabase");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">

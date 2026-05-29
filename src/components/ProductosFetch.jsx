@@ -21,7 +21,8 @@ export function useFetch(pagina = 1, porPagina = 9) {
                     .select('*', { count: 'exact' })
                     .eq('activo', true)
                     .range(desde, hasta)
-                    .order('fecha_creacion', { ascending: false });
+                    .order('fecha_creacion', { ascending: false })
+                    .order('id', { ascending: false });
 
 
                 if (supabaseError) {
